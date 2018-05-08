@@ -1,14 +1,21 @@
-const url = `https://www.json-generator.com/api/json/get/cfnzTBQTTm?indent=2`
-
-// async function loadUser (user) {
-//     let response = await fetch(url)
-//     let data = await response.json()
-//     return data.filter(user => user.uid == user)
-// }
+const url = `https://www.json-generator.com/api/json/get/bUScAOfrkO?indent=2`
 
 export class Users {
-    getUser (user, pass) {
-        return fetch(url).then(resp => resp.json())
+    async getUid (user, pass) {
+        let response =  await fetch(url)
+        let data = await response.json()
+        return data.filter(item => item.uid == user && item.pass == pass )
+    }
+
+    async getUser (token) {
+        let response =  await fetch(url)
+        let data = await response.json()
+        return data.filter(item => item.id == token )
+    }
+
+    async getUsers () {
+        let response =  await fetch(url)
+        return  await response.json()
     }
 }
 

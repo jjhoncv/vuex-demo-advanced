@@ -1,5 +1,5 @@
 <template>
-  <div v-if="msg">
+  <div v-if="msg" class="message">
     {{ msg }}
   </div>
 </template>
@@ -15,5 +15,11 @@ export default {
 </script>
 
 <style>
-
+.message {
+  position: absolute;
+  border: 1px solid #ddd;
+  padding: 5px 20px;
+  left: 0;
+  right: 0;
+}
 </style>

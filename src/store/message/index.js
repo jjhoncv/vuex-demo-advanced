@@ -10,7 +10,6 @@ export default {
     },
     mutations: {
         ['UPDATE_MESSAGE'] (state, textMsg) {
-            console.log(state.msg)
             state.msg = textMsg
         }     
     }

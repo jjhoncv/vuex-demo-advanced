@@ -3,12 +3,16 @@ import Vuex from 'vuex';
 
 import login from './login'
 import message from './message'
+import user from './user'
+import page from './page'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     modules: {
         login,
+        user,
+        page,
         message
     }
 })

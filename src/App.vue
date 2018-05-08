@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <header>
+      <p>page: {{ page }}</p>
       <Menu/>
+      <hr/>
     </header>
     <main>
       <Message/>
-      <Users/>
-      <User/>
-      <Login/>
+      <Users v-show="page == 'users'"/>
+      <User v-show="page == 'profile'"/>
+      <Login v-show="page == 'login'"/>
     </main>
     <footer>
-      <Menu/>
+      <hr/>
+      <div class="copyright">@Copyrigth</div>
     </footer>
   </div>
 </template>
@@ -22,6 +25,8 @@ import User from './User.vue'
 import Login from './Login.vue'
 import Message from './Message.vue'
 
+import { mapActions, mapState } from 'vuex'
+
 export default {
   name: 'app',
   components : {
@@ -30,6 +35,15 @@ export default {
     User,
     Login,
     Message
+  },
+  computed: {
+    ...mapState('page', ['page'])
+  },
+  methods : {
+    ...mapActions('login', ['valid'])
+   },
+  mounted () {
+    this.valid()
   }
 }
 </script>
@@ -42,6 +56,14 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
 }
 
 h1, h2 {
@@ -60,5 +82,13 @@ li {
 
 a {
   color: #42b983;
+}
+main {
+  min-height: 400px;
+  display: flex;
+  position: relative;
+}
+.copyright {
+  text-align: left;
 }
 </style>
