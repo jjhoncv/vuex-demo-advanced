@@ -6,6 +6,7 @@
       <hr/>
     </header>
     <main>
+      <Card description="hi!" title="is my title" :cssCard="cssCard"/>
       <Message/>
       <Users v-show="page == 'users'"/>
       <User v-show="page == 'profile'"/>
@@ -19,39 +20,49 @@
 </template>
 
 <script>
-import Menu from './Menu.vue'
-import Users from './Users.vue'
-import User from './User.vue'
-import Login from './Login.vue'
-import Message from './Message.vue'
+import { cssCard } from "./services/styles/index";
 
-import { mapActions, mapState } from 'vuex'
+import Menu from "./Menu.vue";
+import Users from "./Users.vue";
+import User from "./User.vue";
+import Login from "./Login.vue";
+import Message from "./Message.vue";
+
+import { Card } from "./../library-components/ui/index";
+
+import { mapActions, mapState } from "vuex";
 
 export default {
-  name: 'app',
-  components : {
+  data() {
+    return {
+      cssCard: cssCard
+    };
+  },
+  name: "app",
+  components: {
     Menu,
     Users,
     User,
+    Card,
     Login,
     Message
   },
   computed: {
-    ...mapState('page', ['page'])
+    ...mapState("page", ["page"])
   },
-  methods : {
-    ...mapActions('login', ['valid'])
-   },
-  mounted () {
-    this.valid()
-    console.log("init")
+  methods: {
+    ...mapActions("login", ["valid"])
+  },
+  mounted() {
+    this.valid();
+    console.log("init");
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -67,7 +78,8 @@ body {
   justify-content: center;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 

@@ -1,4 +1,4 @@
-# vuex-demo
+# vuex-demo-advanced
 
 > demo for use vuex
 
